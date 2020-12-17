@@ -1,5 +1,5 @@
 <?php
-require_once('database.php');
+require_once('bdd.php');
 
 
 //On verifie la méthode du formulaire
@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $sql = 'INSERT INTO message(message) VALUES (:message);';
     
     //On prépare la requête
-    $add = database()->prepare($sql);
+    $add = $db->prepare($sql);
     //On injecte les valeurs
     $add->bindValue(':message', $message, PDO::PARAM_STR);
     $add->execute();

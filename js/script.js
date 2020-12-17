@@ -1,3 +1,5 @@
+afficherList();
+
 //on defini ce qui va se passer quand nous allons cliquer sur le bouton ayant l'id valid
 document.getElementById("valid").addEventListener("click", function(){
     ajoutMessage();
@@ -31,4 +33,22 @@ function ajoutMessage(){
 
 
 
+}
+// var lastId = 0
+function afficherList(){
+    let xmlhttp = new XMLHttpRequest()
+    xmlhttp.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            var messages = JSON.parse(this.response)
+            let discussion = document.getElementById("discussion")
+            let theMessage = ""
+            for (let i=0; i < messages.length; i++){
+               
+                discussion.innerHTML +="<li>"+messages[i].message+"</li>"
+            // lastId = message[i].id 
+            }
+        } 
+    }
+    xmlhttp.open("GET", "php/list.php")
+    xmlhttp.send();
 }

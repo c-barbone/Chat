@@ -1,31 +1,37 @@
-<?php
-session_start();
-include_once('view/header.php');
-if(isset($_SESSION['user']) && !empty($_SESSION['user'])){
-    // Ici, l'utilisateur est connecté
-    ?>
-    <p>Bonjour <?= $_SESSION['user']['pseudo'] ?> <a class="btn btn-danger ml-5 mt-2" href="deconnexion.php">Déconnexion</a></p>
-<?php
-}else{
-    // Ici l'utilisateur n'est pas connecté
-    ?>
-    <a class="btn btn-primary mr-2 mt-2" href="connexion.php">Connexion</a>
-<?php
-}
-?>
-<div class="col-12 my-1">
-    <div class="p-2" id="discussion">
-    </div>
-</div>
-<div class="col-12 saisie">
-    <div class="input-group">
-        <input type="text" class="form-control" id="texte" placeholder="Entrez votre texte">
-        <div class="input-group-append">
-            <span class="input-group-text" id="valid"><i class="la la-check"></i></span>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>On débute avec Ajax</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="col-12 my-1">
+        <div class="p-2" id="discussion">
         </div>
     </div>
-</div>
-<?php
-include_once('view/footer.php');
-?>
-<script type="text/javascript" src="js/script.js"></script>
+    <section class="container">
+        <main class="row">
+            <div class="col-12 saisie">
+            <form method="POST">
+                <div class="input-group">
+                 
+                    <input type="text" class="form-control" id="texte" placeholder="Entrez votre texte">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="valid">Envoyer</span>
+                    </div>
+                   
+                    
+                </div>
+                </form>
+                <div id="reponse"></div>
+            </div>
+        </main>
+    </section>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
